@@ -10,9 +10,13 @@ router.get("/getnews",async(req, res) => {
     //   console.error(error.error);
     //   res.status(500).send("Internal Server Error");
     // }
-    let k = await fetch("https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=0f03cebe013543198abee230ab815999")
+    const {country,category,apiKey,page,pagesize} = req.query;
+    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pagesize}`
+
+
+    let k = await fetch(url)
     let j = await k.json()
-    console.log(j);
+    // console.log(j);
    
    
 
